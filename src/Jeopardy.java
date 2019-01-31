@@ -29,6 +29,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import sun.awt.AWTAccessor.SystemTrayAccessor;
+
 
 
 /* Check out the Jeopardy Handout to see what the end result should look like: http://bit.ly/1bvnvd4 */
@@ -42,6 +44,10 @@ public class Jeopardy implements ActionListener{
 	private JLabel scoreBox = new JLabel("0");
 	private int buttonCount = 0;
 	private AudioClip sound;
+	boolean onepressed=false;
+	boolean twopressed=false;
+	boolean threepressed=false;
+	boolean fourpressed=false;
 
 	public static void main(String[] args) {
 		new Jeopardy().start();
@@ -100,6 +106,9 @@ fourthButton.addActionListener(this);
 		frame.add(makeScorePanel(), BorderLayout.NORTH);
 		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().height,
 				Toolkit.getDefaultToolkit().getScreenSize().width);
+	
+
+	
 	}
 
 
@@ -125,11 +134,24 @@ buttonCount+=1;
 		// If the buttonPressed was the firstButton
 
 			// Call the askQuestion() method
- if(buttonPressed==fourthButton) {
+ if(buttonPressed==fourthButton && fourpressed==false) {
 	 askQuestion("Did France win or lose the Napoleonic wars? \nEnter won or lost.","lost",100);
- }else if(buttonPressed==thirdButton) {
+ fourpressed=true;
+ }else if(buttonPressed==thirdButton && threepressed==false) {
 	 askQuestion("What country near Spain grew to be \nan early and large colonial power? Please capitalize.","Portugal",200);
+threepressed=true;
+ }else if(buttonPressed==secondButton && twopressed==false) {
+	 askQuestion("What country is famous for its policy of isolationism? Please capitalize.","Jortugal",300);
+twopressed=true;
+ }else if(buttonPressed==firstButton && onepressed==false) {
+	 askQuestion("What country did the discoverer \nof relativity come from? Please capitalize.","Germany",500);
+onepressed=true;
  }
+ updateScore();
+	if(onepressed==true && twopressed==true && threepressed==true && fourpressed==true) {
+	System.out.println(score);
+		System.exit(0);	
+	}
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
 
 		// If the buttonPressed was the secondButton
