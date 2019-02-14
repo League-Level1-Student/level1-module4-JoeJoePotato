@@ -79,7 +79,11 @@ frame.addMouseListener(this);
 		System.out.println("clicked");
 		// 12. remove everything from the frame that was added earlier
 		frame.remove(ladel);
-		label=loadImageFromComputer("06-Optical-Illusions-That-Will-Make-Your-Brain-Hurt_11066665-%C2%A9mark.jpg");
+		label=new JLabel();
+		label=loadImageFromComputer("itwo.jpg");
+		frame.add(label);
+		frame.pack();
+		
 		
 		// 13. load a new image like before (this is more than one line of code)
 		
