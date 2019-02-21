@@ -40,7 +40,7 @@ int lives=5;
 	void setup() {
 		frame.setVisible(true);
 		currentLetter = generateRandomLetter();
-		label.setFont(label.getFont().deriveFont(36.0f));
+		label.setFont(label.getFont().deriveFont(29.0f));
 		label.setHorizontalAlignment(JLabel.CENTER);
 		frame.addKeyListener(this);
 		frame.add(label);
