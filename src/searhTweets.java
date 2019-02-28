@@ -26,6 +26,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import sun.awt.AWTAccessor.SystemTrayAccessor;
+import twitter4j.Query;
+import twitter4j.QueryResult;
+import twitter4j.Twitter;
+import twitter4j.TwitterFactory;
+import twitter4j.auth.AccessToken;
 
 public class searhTweets implements MouseListener {
 JButton searcher=new JButton();
@@ -43,6 +48,8 @@ void setup() {
 	panel.add(entry);
 	frame.pack();
 	searcher.addMouseListener(this);
+	searcher.setText("search twitter");
+	frame.setTitle("Twitter Explorer");
 }
 private String getLatestTweet(String searchingFor) {
 
