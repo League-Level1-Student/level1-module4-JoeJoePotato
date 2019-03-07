@@ -27,12 +27,23 @@ import javax.swing.JTextField;
 
 import sun.awt.AWTAccessor.SystemTrayAccessor;
 
-public class PigLatinTranslater {
+public class PigLatinTranslater implements MouseListener {
 JFrame frame= new JFrame();
 JButton translate=new JButton();
 JTextField entry=new JTextField();
+JPanel panel=new JPanel();
 public static void main(String[] args) {
-	
+	PigLatinTranslater l= new PigLatinTranslater();
+	l.setup();
+}
+public void setup() {
+	frame.add(panel);
+	panel.add(entry);
+	panel.add(translate);
+	translate.addMouseListener(this);
+	frame.setVisible(true);
+	frame.setTitle("enter the message to be translated");
+translate.setText("click to translate");
 }
      /**
      * Method to test whether a character is a letter or not.
@@ -98,4 +109,30 @@ public static void main(String[] args) {
                     return i;
                return 0;
      }
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		String u=entry.getText();
+	System.out.println(translate(u));
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
